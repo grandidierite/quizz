@@ -2,7 +2,6 @@
 	include 'api.php';
 
 	$quesList = startQuiz($conn);
-	//var_dump($quesList);
 	$totalques = count($quesList);
 ?>
 
@@ -88,8 +87,7 @@
 					  	<div class="card-header">Problem <?php echo $i; ?> <span class="score text-info float-right">Your Score: 0</span></div>
 				  		<div class="card-body">
 				  			<div id="sign<?php echo $i; ?>"></div>
-				  			<!--<p class="text-success text-center" style="font-size:24px;font-weight:bold;">&#10004; CORRECT</p>
-				  			<p class="text-danger text-center" style="font-size:24px;font-weight:bold;">&#10060; WRONG</p>-->
+				  			
 					    	<div class="card-text mb-5">
 					    		<p><?php echo $ques['question']; ?></p>
 					    		
@@ -141,14 +139,11 @@
 					    		<button id="rst<?php echo $i; ?>" class="btn btn-primary reset mx-auto" data-problem="<?php echo $i; ?>">Reset</button>
 				    			<?php endif; ?>
 					    		<button id="sbt<?php echo $i; ?>" class="btn btn-primary submit mx-auto" data-id="<?php echo $ques['id']; ?>" data-problem="<?php echo $i; ?>" data-problem-type="<?php echo $ques['question_type']; ?>" data-button="<?php echo $i === $totalques ? 'finish' : 'next' ?>">Submit</button>
-					    		<!--<button class="btn btn-primary" data-page="<?php //echo $i+1; ?>">Next</button>-->
+					    		
 					    	</div>
 					  	</div>
 					</div>
-					<div class="clearfix">
-						<!--<button class="btn btn-secondary previous" data-page="1">Previous</button>-->
-	    				
-	    			</div>
+					
 				</div>
 				<?php $i++; endforeach; ?>
 				<div id="slide<?php echo $i+1; ?>" class="slides">
@@ -163,135 +158,6 @@
 					  	</div>
 					</div>
 				</div>
-				<!--<div id="question2" class="problems">
-					<p class="lead" style="font-weight:bold;color:white;">Complete 10%</p>
-				  	<div class="progress mb-5">
-						<div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				    <div class="card border-primary mb-3">
-					  	<div class="card-header">Problem 2</div>
-				  		<div class="card-body">
-					    	
-					    	<div class="card-text">
-					    		<p>What is the next prime number after 7?</p>
-					    		
-								<div class="form-text" ><input type="text" class="form-text-input" placeholder="Answer"></div>
-								
-					    	</div>
-
-					  	</div>
-					</div>
-					<div class="clearfix">
-						<button class="btn btn-secondary previous" data-page="2">Previous</button>
-	    				<button class="btn btn-primary next float-right" data-page="2">Next</button>
-	    			</div>
-				</div>
-				<div id="question3" class="problems">
-					<p class="lead" style="font-weight:bold;color:white;">Complete 20%</p>
-				  	<div class="progress mb-5">
-						<div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				    <div class="card border-primary mb-3">
-					  	<div class="card-header">Problem 3</div>
-				  		<div class="card-body">
-					    	
-					    	<div class="card-text">
-					    		<p>A clock strikes once at 1 o’clock, twice at 2 o’clock, thrice at 3 o’clock and so on. How many times will it strike in 24 hours?</p>
-					    		
-								<div class="form-check">
-									<input class="form-check-input" name="radio1" type="radio" value="78">78
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" name="radio1" type="radio" value="136">136
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" name="radio1" type="radio" value="156">156
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" name="radio1" type="radio" value="196">196
-								</div>
-								
-					    	</div>
-
-					  	</div>
-					</div>
-					<div class="clearfix">
-						<button class="btn btn-secondary previous" data-page="3">Previous</button>
-	    				<button class="btn btn-primary next float-right" data-page="3">Next</button>
-	    			</div>
-				</div>
-				<div id="question4" class="problems">
-					<p class="lead" style="font-weight:bold;color:white;">Complete 30%</p>
-				  	<div class="progress mb-5">
-						<div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				    <div class="card border-primary mb-3">
-					  	<div class="card-header">Problem 4</div>
-				  		<div class="card-body">
-					    	
-					    	<div class="card-text">
-					    		<p>What are the three primary colours?</p>
-					    		
-								<div class="form-check">
-									<input class="form-check-input" name="check1" type="checkbox" value="Blue">Blue
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" name="check1" type="checkbox" value="Red">Red
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" name="check1" type="checkbox" value="Yellow">Yellow
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" name="check1" type="checkbox" value="Black">Black
-								</div>
-								
-					    	</div>
-
-					  	</div>
-					</div>
-					<div class="clearfix">
-						<button class="btn btn-secondary previous" data-page="4">Previous</button>
-	    				<button class="btn btn-primary next float-right" data-page="4">Next</button>
-	    			</div>
-				</div>
-				<div id="question5" class="problems">
-					<p class="lead" style="font-weight:bold;color:white;">Complete 40%</p>
-				  	<div class="progress mb-5">
-						<div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				    <div class="card border-primary mb-3">
-					  	<div class="card-header">Problem 5</div>
-				  		<div class="card-body">
-					    	
-					    	<div class="card-text">
-					    		<p>In which direction do we see the sunrise?</p>
-					    		
-					    		<div class="src text-center mb-3">
-					    			<img src="images/sunrise.jpg" class="obj">
-				    			</div>
-
-								<div class="form-check">
-									<input class="form-check-input" name="check2" type="radio" value="Blue">South
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" name="check2" type="radio" value="Red">East
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" name="check2" type="radio" value="Yellow">North
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" name="check2" type="radio" value="Black">West
-								</div>
-								
-					    	</div>
-
-					  	</div>
-					</div>
-					<div class="clearfix">
-						<button class="btn btn-secondary previous" data-page="5">Previous</button>
-	    				<button class="btn btn-primary next float-right" data-page="5">Next</button>
-	    			</div>
-				</div>-->
 			</div>
 		</div>
 	</div>
@@ -350,7 +216,6 @@
 						$(this).css({"left": "0px", "top": "0px"});
 					}
 				});
-				//console.log("blank.jpg");
 			}
 			
 			$(this).attr('src', src);
